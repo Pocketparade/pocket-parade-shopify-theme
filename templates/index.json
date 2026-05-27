@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "home_news": {
+      "type": "home-news",
+      "blocks": {
+        "update_1": { "type": "update", "settings": { "date": "This week", "label": "Trailer", "title": "Trailer stop details go live here first.", "body": "Post the next city, pickup hours, featured table items, and any quick changes so customers know exactly where to find you.", "link_label": "See news", "link": "/#news" } },
+        "update_2": { "type": "update", "settings": { "date": "Drop alert", "label": "New", "title": "Surprise drops get a loud little spotlight.", "body": "Use this card for a new batch, a restock, a bundle, or a limited item before it sells through.", "link_label": "Shop latest", "link": "/collections/all" } },
+        "update_3": { "type": "update", "settings": { "date": "Heads up", "label": "News", "title": "Small notes can still feel fun.", "body": "Announce rain plans, event-only items, giveaway details, or behind-the-scenes trailer updates without cluttering the page.", "link_label": "", "link": "" } }
+      },
+      "block_order": ["update_1", "update_2", "update_3"],
+      "settings": { "eyebrow": "Pocket Parade", "heading": "Trailer updates, surprise drops, and pop-up notes.", "body": "The front door for what is happening now: where the trailer is headed, what just landed, and what is almost sold out.", "show_signup": true }
+    }
+  },
+  "order": ["home_news"]
+}
