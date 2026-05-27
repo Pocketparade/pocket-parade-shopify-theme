@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "pill_1": { "type": "pill", "settings": { "text": "Gift-ready" } },
+        "pill_2": { "type": "pill", "settings": { "text": "Trailer favorite" } }
+      },
+      "block_order": ["pill_1", "pill_2"],
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
