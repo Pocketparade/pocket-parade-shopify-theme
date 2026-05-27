@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_bg }}">
+    <title>{{ page_title }}{%- unless page_title contains shop.name %} - {{ shop.name }}{% endunless -%}</title>
+    {%- if page_description -%}<meta name="description" content="{{ page_description | escape }}">{%- endif -%}
+    {{ content_for_header }}
+    <link rel="icon" type="image/svg+xml" href="{{ 'pocket-parade-logo.svg' | asset_url }}">
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+  </head>
+  <body class="pp-body">
+    {% section 'announcement-bar' %}
+    {% section 'header' %}
+    <main id="MainContent" class="pp-main" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+    {% section 'footer' %}
+  </body>
+</html>
