@@ -1,0 +1,16 @@
+<footer class="pp-footer-shell pp-footer-shell--minimal">
+  <div class="pp-footer-inner pp-footer-inner--minimal">
+    <a class="pp-brand-link pp-brand-link--footer" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+      <img class="pp-brand-logo pp-brand-logo--footer pp-brand-logo--footer-minimal" src="{{ 'pocket-parade-logo.svg' | asset_url }}" alt="{{ settings.brand_title | default: shop.name }}">
+    </a>
+    <div class="pp-footer-mini-links">
+      <a href="/collections/all">Shop</a>
+      <a href="/#news">News</a>
+      <a href="/#contact">Contact</a>
+      {% if settings.instagram_url != blank %}<a href="{{ settings.instagram_url }}">Instagram</a>{% endif %}
+    </div>
+  </div>
+</footer>
+{% schema %}
+{"name":"Footer","settings":[]}
+{% endschema %}
