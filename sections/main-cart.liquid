@@ -1,0 +1,13 @@
+<section class="pp-section">
+  <div class="pp-container">
+    <div class="pp-section-header"><div><div class="pp-heading-eyebrow">Cart</div><h1 class="pp-heading-lg">Your parade picks</h1></div><a class="pp-button-secondary" href="/collections/all">Keep shopping</a></div>
+    {% if cart.item_count > 0 %}
+      <form action="{{ routes.cart_url }}" method="post" novalidate><div class="pp-cart-layout"><div class="pp-card pp-cart-items">{% for item in cart.items %}<div class="pp-cart-line"><a class="pp-cart-line-media" href="{{ item.url }}">{% if item.image %}{{ item.image | image_url: width: 240 | image_tag: loading: 'lazy', widths: '120,180,240', style: 'width:100%; height:100%; object-fit:cover;' }}{% endif %}</a><div><h2><a href="{{ item.url }}">{{ item.product.title }}</a></h2>{% unless item.product.has_only_default_variant %}<div class="pp-copy">{{ item.variant.title }}</div>{% endunless %}<a href="{{ item.url_to_remove }}" class="pp-heading-eyebrow">Remove</a></div><div class="pp-cart-qty"><label class="pp-heading-eyebrow" for="Quantity-{{ forloop.index }}">Qty</label><input class="pp-input" id="Quantity-{{ forloop.index }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0"><strong>{{ item.final_line_price | money }}</strong></div></div>{% endfor %}</div><div class="pp-card pp-cart-summary"><div class="pp-heading-eyebrow">Summary</div><h2>Ready when you are</h2><div class="pp-price-row"><span>Subtotal</span><strong>{{ cart.total_price | money }}</strong></div><p class="pp-copy">Shipping, taxes, and discounts are calculated at checkout.</p><button class="pp-button-secondary" type="submit" name="update">Update cart</button><button class="pp-button" type="submit" name="checkout">Checkout</button></div></div></form>
+    {% else %}
+      <div class="pp-card pp-empty-state"><div class="pp-heading-eyebrow">Empty cart</div><h2 class="pp-heading-lg">Your cart is waiting for a little joy.</h2><div class="pp-copy">Browse the latest drops, bundles, and trailer favorites.</div><a class="pp-button" href="/collections/all">Shop products</a></div>
+    {% endif %}
+  </div>
+</section>
+{% schema %}
+{"name":"Main cart","settings":[]}
+{% endschema %}
