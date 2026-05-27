@@ -1,0 +1,9 @@
+<div class="pp-product-card">
+  <a href="{{ product.url }}"><div class="pp-product-media">{% if product.featured_image %}{{ product.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360,540,720,900', style: 'width:100%; height:100%; object-fit:cover;' }}{% endif %}</div></a>
+  <div class="pp-product-info">
+    {% if product.tags.size > 0 %}<div class="pp-badge">{{ product.tags.first }}</div>{% endif %}
+    <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    <div class="pp-muted-small">Pocket Parade Signature Drop</div>
+    <div class="pp-product-row"><div>{{ product.price | money }}</div><a class="pp-button" href="{{ product.url }}">Shop</a></div>
+  </div>
+</div>
