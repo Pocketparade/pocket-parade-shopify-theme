@@ -1,0 +1,28 @@
+<header class="pp-header-shell pp-header-shell--minimal">
+  <div class="pp-header-inner pp-header-inner--minimal">
+    <a class="pp-brand-link pp-brand-link--minimal" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+      <img class="pp-brand-logo pp-brand-logo--minimal" src="{{ 'pocket-parade-logo.svg' | asset_url }}" alt="{{ settings.brand_title | default: shop.name }}">
+    </a>
+    <div class="pp-header-actions pp-header-actions--minimal">
+      <nav class="pp-quick-links" aria-label="Quick links">
+        <a href="/collections/all">Shop</a>
+        <a href="/#news">News</a>
+        <a href="/#contact">Contact Us</a>
+      </nav>
+      <a class="pp-action-button pp-cart-chip" href="{{ routes.cart_url }}">Cart{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}</a>
+      <details class="pp-menu-toggle">
+        <summary class="pp-action-button pp-menu-summary">Menu</summary>
+        <nav class="pp-menu-panel" aria-label="Main menu">
+          <a href="/collections/all">Shop all</a>
+          <a href="/#news">New drops</a>
+          <a href="/#news">Trailer news</a>
+          <a href="/#contact">Contact</a>
+          <a href="{{ routes.search_url }}">Search</a>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
+{% schema %}
+{"name":"Header","settings":[]}
+{% endschema %}
