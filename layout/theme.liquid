@@ -9,6 +9,7 @@
     {{ content_for_header }}
     <link rel="icon" type="image/svg+xml" href="{{ 'pocket-parade-logo.svg' | asset_url }}">
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'fixes.css' | asset_url | stylesheet_tag }}
   </head>
   <body class="pp-body">
     {% section 'announcement-bar' %}
