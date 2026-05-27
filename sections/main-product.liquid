@@ -1,0 +1,24 @@
+<section class="pp-product-page">
+  <div class="pp-container pp-product-layout">
+    <div class="pp-product-gallery">
+      <div class="pp-product-main-media">{% if product.featured_image %}{{ product.featured_image | image_url: width: 1400 | image_tag: loading: 'eager', widths: '700,900,1200,1400', style: 'width:100%; height:100%; object-fit:cover;' }}{% endif %}</div>
+      {% if product.images.size > 1 %}<div class="pp-product-thumbs">{% for image in product.images limit: 4 %}<div>{{ image | image_url: width: 400 | image_tag: loading: 'lazy', widths: '180,240,320,400', style: 'width:100%; height:100%; object-fit:cover;' }}</div>{% endfor %}</div>{% endif %}
+    </div>
+    <div class="pp-product-panel">
+      <div class="pp-heading-eyebrow">Pocket Parade drop</div>
+      <h1>{{ product.title }}</h1>
+      <div class="pp-product-price">{{ product.selected_or_first_available_variant.price | money }}</div>
+      {% if product.description != blank %}<div class="pp-copy rte">{{ product.description }}</div>{% endif %}
+      {% form 'product', product %}
+        {% if product.variants.size > 1 %}<label class="pp-heading-eyebrow" for="Variant-{{ section.id }}">Choose option</label><select id="Variant-{{ section.id }}" name="id" class="pp-input">{% for variant in product.variants %}<option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>{{ variant.title }}{% unless variant.available %} - Sold out{% endunless %}</option>{% endfor %}</select>{% else %}<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">{% endif %}
+        <label class="pp-heading-eyebrow" for="Quantity-{{ section.id }}">Quantity</label><input id="Quantity-{{ section.id }}" class="pp-input pp-qty" type="number" name="quantity" value="1" min="1">
+        <button class="pp-button pp-product-submit" type="submit" {% unless product.available %}disabled{% endunless %}>{% if product.available %}Add to cart{% else %}Sold out{% endif %}</button>
+        {{ form | payment_button }}
+      {% endform %}
+      {% if section.blocks.size > 0 %}<div class="pp-product-pills">{% for block in section.blocks %}<span class="pp-badge" {{ block.shopify_attributes }}>{{ block.settings.text }}</span>{% endfor %}</div>{% endif %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{"name":"Main product","blocks":[{"type":"pill","name":"Info pill","settings":[{"type":"text","id":"text","label":"Text","default":"Gift-ready"}]}],"max_blocks":6}
+{% endschema %}
