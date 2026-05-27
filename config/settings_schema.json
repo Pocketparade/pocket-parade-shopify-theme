@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Theme settings",
+    "settings": [
+      { "type": "text", "id": "brand_title", "label": "Brand title", "default": "POCKET PARADE" },
+      { "type": "text", "id": "brand_subtitle", "label": "Brand subtitle", "default": "Fun / useful / giftable / trailer pop-ups" },
+      { "type": "color", "id": "color_bg", "label": "Background color", "default": "#08090D" },
+      { "type": "url", "id": "instagram_url", "label": "Instagram URL", "default": "https://www.instagram.com/pocket_parade/" },
+      { "type": "url", "id": "facebook_url", "label": "Facebook URL", "default": "https://www.facebook.com/profile.php?id=61590265717529" },
+      { "type": "url", "id": "tiktok_url", "label": "TikTok URL", "default": "https://www.tiktok.com/@pocket.parade?lang=en" }
+    ]
+  }
+]
