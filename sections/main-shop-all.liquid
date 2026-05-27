@@ -1,0 +1,17 @@
+<section class="pp-shop-page">
+  <div class="pp-container">
+    <div class="pp-shop-hero"><div><div class="pp-heading-eyebrow">{{ section.settings.eyebrow }}</div><h1>{{ section.settings.heading }}</h1><p>{{ section.settings.body }}</p></div><div class="pp-shop-hero-actions"><a href="/collections/all">All products</a><a href="/#news">Drop notes</a><a href="/#contact">Contact</a></div></div>
+    {% paginate collection.products by section.settings.products_per_page %}
+      {% if collection.products_count > 0 %}
+        <div class="pp-shop-toolbar"><span>{{ collection.products_count }} item{% unless collection.products_count == 1 %}s{% endunless %}</span><span>Online + trailer favorites</span></div>
+        <div class="pp-products pp-shop-products">{% for product in collection.products %}{% render 'product-card', product: product %}{% endfor %}</div>
+        {% if paginate.pages > 1 %}<div class="pp-pagination">{% if paginate.previous %}<a class="pp-button-secondary" href="{{ paginate.previous.url }}">Previous</a>{% endif %}{% if paginate.next %}<a class="pp-button-secondary" href="{{ paginate.next.url }}">Next</a>{% endif %}</div>{% endif %}
+      {% else %}
+        <div class="pp-card pp-empty-state"><div class="pp-heading-eyebrow">Shop</div><h2 class="pp-heading-lg">Products will land here soon.</h2><div class="pp-copy">Once products are active in Shopify, this page becomes the main shop grid.</div><a class="pp-button" href="/#news">Check trailer news</a></div>
+      {% endif %}
+    {% endpaginate %}
+  </div>
+</section>
+{% schema %}
+{"name":"Main shop all","settings":[{"type":"text","id":"eyebrow","label":"Eyebrow","default":"Shop Pocket Parade"},{"type":"text","id":"heading","label":"Heading","default":"Drops, gifts, and trailer favorites."},{"type":"textarea","id":"body","label":"Body","default":"Browse the current online lineup, then check the trailer news for event-only finds and local pickup notes."},{"type":"range","id":"products_per_page","label":"Products per page","min":4,"max":24,"step":4,"default":12}]}
+{% endschema %}
